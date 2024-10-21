@@ -5,6 +5,9 @@ import navigationService from './app/navigator/navigationService';
 import ChiTietChuyenTien from './app/screens/ChiTietChuyenTien';
 import HomeScreen from './app/screens/HomeScreen';
 import ChuyenTienTrongNuoc from './app/screens/ChuyenTienTrongNuoc';
+import GiaoDichThanhCong from './app/screens/GiaoDichThanhCong';
+import ThongTinThongBao from './app/screens/ThongTinThongBao';
+// import QRScannerScreen from './app/screens/QRScannerScreen';
 const Stack = createStackNavigator();
 const config = {
   animation: 'timing',
@@ -44,6 +47,9 @@ const AppRouter = () => {
         />
 
         <Stack.Screen name="ChiTietChuyenTien" component={ChiTietChuyenTien} />
+        <Stack.Screen name="ThongTinThongBao" component={ThongTinThongBao} />
+        {/* <Stack.Screen name="QRScannerScreen" component={QRScannerScreen} /> */}
+        <Stack.Screen name="GiaoDichThanhCong" component={GiaoDichThanhCong} />
       </Stack.Navigator>
     </NavigationContainer>
   );

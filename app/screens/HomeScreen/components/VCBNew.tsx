@@ -1,76 +1,111 @@
-import { WIDTH } from '../../../../app/config/functions';
+import {getWidth, HEIGHT, WIDTH} from '../../../../app/config/functions';
 import React from 'react';
-import { View, Text, Image, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  StyleSheet,
+} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {images} from '../assets';
 
 const VCBNew = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
         {/* Header */}
-        <View style={styles.header}>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignSelf: 'flex-end',
+          }}>
           <Text style={styles.headerText}>Cập nhật: 8:00 - 19/08/2023</Text>
-          <Icon name="refresh" size={24} color="#4CAF50" />
+          <TouchableOpacity>
+            <Image
+              source={images.image_17}
+              style={{
+                height: HEIGHT(22),
+                width: WIDTH(22),
+                marginRight: WIDTH(12),
+                marginLeft: WIDTH(6),
+              }}
+            />
+          </TouchableOpacity>
         </View>
 
         {/* New Features Section */}
         <Text style={styles.sectionTitle}>Mới nhất trên VCB Digibank</Text>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.newFeaturesScroll}>
-          <TouchableOpacity style={[styles.newFeatureItem,{flexDirection:"row",justifyContent:"center"}]}>
-                      <Icon name="chart-pie" size={24} color="#4CAF50" />
-                      <View>
-                          <View style ={{padding:4,borderRadius:38,backgroundColor:"red",alignItems:"center",justifyContent:"center",width:WIDTH(30),height:WIDTH(20)}} >
-                          <Text style ={{color:"#fff"}} >Mới</Text>
-                              
-                          </View>
-            <Text>Quản lý chi tiêu</Text>
-                      </View>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.newFeaturesScroll}>
+          <TouchableOpacity style={[]}>
+            <Image
+              resizeMode="cover"
+              source={images.image_18}
+              style={{height: HEIGHT(60), width: WIDTH(200)}}
+            />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.newFeatureItem}>
-            <Icon name="home-account" size={24} color="#4CAF50" />
-            <Text>VCB Family</Text>
+          <TouchableOpacity>
+            <Image
+              resizeMode="cover"
+              source={images.image_19}
+              style={{height: HEIGHT(60), width: WIDTH(140)}}
+            />
           </TouchableOpacity>
         </ScrollView>
 
         {/* Promotion Banner */}
-        <View style={styles.promotionBanner}>
-          <Image
-            source={{uri: 'https://example.com/promotion-image.jpg'}}
-            style={styles.promotionImage}
-          />
-          <View style={styles.promotionContent}>
-            <Text style={styles.promotionTitle}>Miễn phí thường niên 1 năm cho gói Family</Text>
-            <TouchableOpacity style={styles.promotionButton}>
-              <Text style={styles.promotionButtonText}>Khám phá ngay</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+        <TouchableOpacity style={styles.promotionBanner}>
+          <Image source={images.image_20} style={styles.promotionImage} />
+        </TouchableOpacity>
 
         {/* Quick Actions */}
-        <Text style={styles.sectionTitle}>Mua sắm liền tay</Text>
+        <TouchableOpacity style={{zIndex: 2}}>
+          <Image
+            resizeMode="stretch"
+            source={images.image_21}
+            style={{height: HEIGHT(60), width: WIDTH(260), alignSelf: 'center'}}
+          />
+        </TouchableOpacity>
+
         <View style={styles.quickActions}>
           <TouchableOpacity style={styles.quickActionItem}>
-            <Icon name="ticket" size={24} color="#4CAF50" />
+            <Image
+              source={images.image_22}
+              style={{height: WIDTH(30), width: WIDTH(30)}}
+            />
             <Text>Đặt vé xe</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.quickActionItem}>
-            <Icon name="flower" size={24} color="#4CAF50" />
+            <Image
+              source={images.image_23}
+              style={{height: WIDTH(30), width: WIDTH(38)}}
+            />
             <Text>Đặt hoa</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.quickActionItem}>
-            <Icon name="train" size={24} color="#4CAF50" />
+            <Image
+              source={images.image_24}
+              style={{height: WIDTH(30), width: WIDTH(30)}}
+            />
             <Text>Đặt vé tàu</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.quickActionItem}>
-            <Icon name="movie" size={24} color="#4CAF50" />
-            <Text>Đặt vé xem phim</Text>
+            <Image
+              resizeMode="cover"
+              source={images.image_25}
+              style={{height: WIDTH(28), width: WIDTH(28)}}
+            />
+            <Text style={{textAlign: 'center'}}>Đặt vé xem phim</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
 
       {/* Trial Version Banner */}
- 
     </SafeAreaView>
   );
 };
@@ -79,6 +114,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F5F5F5',
+    paddingTop: -HEIGHT(20),
   },
   header: {
     flexDirection: 'row',
@@ -136,6 +172,21 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     flexWrap: 'wrap',
     padding: 16,
+    width: getWidth(),
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    marginTop: -HEIGHT(7),
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+
+    elevation: 3,
+    zIndex: 1,
   },
   quickActionItem: {
     alignItems: 'center',

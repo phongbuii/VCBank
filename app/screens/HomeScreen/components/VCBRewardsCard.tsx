@@ -1,36 +1,25 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import {Crown, ChevronRight, MoveRight} from 'lucide-react-native';
 import {HEIGHT, WIDTH} from '../../../../app/config/functions';
+import {images} from '../assets';
 
 const VCBRewardsCard = ({points = 0, onPress}) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.iconContainer}>
-          <Crown color="#FFA500" size={24} />
-        </View>
-        <Text style={styles.title}>VCB Rewards</Text>
-      </View>
-      <View style={styles.content}>
-        <Text style={styles.pointsLabel}>
-          Điểm tích lũy: <Text style={styles.pointsValue}>{points}</Text>
-        </Text>
-
-        <TouchableOpacity style={styles.detailsButton} onPress={onPress}>
-          <Text style={styles.detailsButtonText}>Xem chi tiết</Text>
-          <MoveRight color="#006A4E" size={18} />
-        </TouchableOpacity>
-      </View>
-    </View>
+    <TouchableOpacity style={styles.detailsButton} onPress={onPress}>
+      <Image
+        resizeMode="stretch"
+        source={images.image_16}
+        style={styles.container}
+      />
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 12,
+    height: HEIGHT(170),
+    width: WIDTH(165),
   },
   header: {
     marginBottom: 12,
@@ -75,7 +64,6 @@ const styles = StyleSheet.create({
   detailsButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
   },
   detailsButtonText: {
     fontSize: 14,

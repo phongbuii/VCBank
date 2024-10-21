@@ -5,11 +5,13 @@ import {
   StyleSheet,
   TouchableOpacity,
   Dimensions,
+  Image,
 } from 'react-native';
 import {Star, ChevronRight} from 'lucide-react-native';
 import Svg, {Polyline, Circle} from 'react-native-svg';
 import {HEIGHT, WIDTH} from '../../../../app/config/functions';
 import LinearGradient from 'react-native-linear-gradient';
+import {images} from '../assets';
 
 const {width} = Dimensions.get('window');
 const CARD_PADDING = 16;
@@ -44,73 +46,21 @@ const FinanceManagementCard = ({onExplorePress}) => {
           <Star color="#FFD700" size={20} />
           <Text style={styles.title}>Quản lý tài chính cá nhân</Text>
         </View>
-        <TouchableOpacity style={styles.tryButton}>
-          <Text style={styles.tryButtonText}>Dùng thử</Text>
-        </TouchableOpacity>
       </View>
       <View style={{flexDirection: 'row'}}>
         <View style={styles.graphContainer}>
-          <View style={styles.bars}>
-            {data.map(
-              (value, index) => (
-                console.log('value', value),
-                (
-                  <View key={index} style={styles.barColumn}>
-                    <LinearGradient
-                      start={{x: 0, y: 1}}
-                      end={{x: 1, y: 0}}
-                      colors={['#86C440', 'white']}
-                      style={[
-                        styles.bar,
-                        {height: GRAPH_HEIGHT, justifyContent: 'flex-end'},
-                      ]}>
-                      <View
-                        style={[
-                          styles.bar,
-                          {height: (value * GRAPH_HEIGHT) / 100, width: '100%'},
-                        ]}
-                      />
-                    </LinearGradient>
-                    <Text style={styles.monthLabel}>{`T${index + 1}`}</Text>
-                  </View>
-                )
-              ),
-            )}
-          </View>
-          <Svg
-            height={GRAPH_HEIGHT}
-            width={GRAPH_WIDTH}
-            style={StyleSheet.absoluteFill}>
-            <Polyline
-              points={pointsLine}
-              fill="none"
-              stroke="#FFA500"
-              strokeWidth="2"
-            />
-            {data.map((value, index) => {
-              const x = (index / (NUM_POINTS - 1)) * GRAPH_WIDTH;
-              const y = GRAPH_HEIGHT - (value / 100) * GRAPH_HEIGHT;
-              return (
-                <Circle
-                  key={index}
-                  cx={x + WIDTH(16)}
-                  cy={y}
-                  r="3"
-                  fill="#FFA500"
-                  stroke={'white'}
-                  strokeWidth={2}
-                />
-              );
-            })}
-          </Svg>
+          <Image
+            source={images.image_14}
+            style={{height: HEIGHT(120), width: WIDTH(150)}}
+          />
         </View>
 
         <View style={styles.footer}>
           <Text style={styles.description}>
             Lập kế hoạch và quản lý chi tiêu hiệu quả
           </Text>
-          <View style={{flexDirection: 'row'}}>
-            <TouchableOpacity onPress={onExplorePress}></TouchableOpacity>
+          <TouchableOpacity
+            style={{flexDirection: 'row', marginTop: HEIGHT(16)}}>
             <LinearGradient
               start={{x: 0, y: 0}}
               end={{x: 1, y: 0}}
@@ -118,7 +68,7 @@ const FinanceManagementCard = ({onExplorePress}) => {
               style={styles.exploreButton}>
               <Text style={styles.exploreButtonText}>Khám phá ngay</Text>
             </LinearGradient>
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
@@ -199,7 +149,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#000000',
     fontWeight: '700',
-    flex: 1,
   },
   exploreButton: {
     backgroundColor: '#4CAF50',
