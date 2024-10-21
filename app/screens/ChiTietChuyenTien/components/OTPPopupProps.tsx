@@ -6,8 +6,11 @@ import {
   TouchableOpacity,
   Modal,
   TextInput,
+  Image,
 } from 'react-native';
 import {ArrowLeft, Home} from 'lucide-react-native';
+import {images} from '../assets';
+import {getFont, HEIGHT, WIDTH} from '../../../../app/config/functions';
 interface OTPPopupProps {
   isVisible: boolean;
   onClose: () => void;
@@ -48,12 +51,17 @@ const OTPPopup: React.FC<OTPPopupProps> = ({
       <View style={styles.overlay}>
         <View style={styles.popup}>
           <TouchableOpacity style={styles.closeButton} onPress={onClose}>
-            <ArrowLeft size={24} color="#000" />
+            <Text style={{transform: [{scaleX: 1.2}], fontSize: getFont(18)}}>
+              X
+            </Text>
           </TouchableOpacity>
 
           <View style={styles.iconContainer}>
-            <View style={styles.icon}>
-              <ArrowLeft size={32} color="#4caf50" />
+            <View style={{}}>
+              <Image
+                source={images.a3}
+                style={{height: HEIGHT(40), width: WIDTH(40)}}
+              />
             </View>
           </View>
 

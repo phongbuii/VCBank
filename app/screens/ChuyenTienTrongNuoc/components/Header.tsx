@@ -5,10 +5,12 @@ import {
   TouchableOpacity,
   StyleSheet,
   StatusBar,
+  Image,
 } from 'react-native';
 import {ArrowLeft, Home} from 'lucide-react-native';
-import {WIDTH} from '../../../../app/config/functions';
+import {HEIGHT, WIDTH} from '../../../../app/config/functions';
 import {goBack} from '../../../navigator/navigationService';
+import {images} from '../assets';
 const Header = () => (
   <View>
     <StatusBar
@@ -29,7 +31,10 @@ const Header = () => (
         <Text style={styles.headerTitle}>Chuyển tiền trong nước</Text>
       </View>
       <TouchableOpacity style={styles.headerRight}>
-        <Home color="#006840" size={24} />
+        <Image
+          source={images.a1}
+          style={{height: HEIGHT(28), width: WIDTH(28)}}
+        />
       </TouchableOpacity>
     </View>
   </View>

@@ -12,16 +12,39 @@ import {
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import OTPPopup from './components/OTPPopupProps';
 import BankSelectionModal from './components/ModalListBank';
+import LinearGradient from 'react-native-linear-gradient';
+import {images} from './assets';
+import {getFont, HEIGHT, WIDTH} from '../../../app/config/functions';
 interface DetailRowProps {
   label: string;
   value: string;
   valueStyle?: TextStyle;
+  isIcon?: boolean;
 }
 
-const DetailRow: React.FC<DetailRowProps> = ({label, value, valueStyle}) => (
+const DetailRow: React.FC<DetailRowProps> = ({
+  label,
+  value,
+  valueStyle,
+  isIcon,
+}) => (
   <View style={styles.detailRow}>
-    <Text style={styles.detailLabel}>{label}</Text>
-    <Text style={[styles.detailValue, valueStyle]}>{value}</Text>
+    <Text style={[styles.detailLabel, {fontSize: getFont(12)}]}>{label}</Text>
+    {isIcon && (
+      <Image
+        resizeMode="center"
+        source={images.a4}
+        style={{
+          height: HEIGHT(20),
+          width: WIDTH(20),
+          position: 'absolute',
+          right: WIDTH(80),
+        }}
+      />
+    )}
+    <Text style={[styles.detailValue, valueStyle, {fontSize: getFont(12)}]}>
+      {value}
+    </Text>
   </View>
 );
 
@@ -32,97 +55,129 @@ const ChiTietChuyenTien = () => {
   const [selectedBank, setSelectedBank] = useState(null);
   return (
     <SafeAreaView style={[styles.container, {paddingTop: insets.top}]}>
-      <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton}>
-          <Text style={styles.backButtonText}>←</Text>
-        </TouchableOpacity>
-        <Text style={styles.headerTitle}>Chuyển tiền trong nước</Text>
-        <TouchableOpacity style={styles.menuButton}>
-          <Text style={styles.menuButtonText}>☰</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.content}>
-        <View style={styles.infoBox}>
-          <Image
-            source={{
-              uri: 'https://cdn-icons-png.flaticon.com/512/1176/1176733.png',
-            }}
-            style={styles.infoIcon}
-          />
-          <Text style={styles.infoText}>
-            Quý khách vui lòng kiểm tra và xác nhận thông tin giao dịch
-          </Text>
-        </View>
-
-        <View style={styles.transferDetails}>
-          <DetailRow
-            label="Hình thức chuyển"
-            value="Chuyển tiền trong Vietcombank"
-          />
-          <DetailRow label="Tài khoản nguồn" value="121 21212 55666" />
-          <DetailRow label="Tài khoản nhận" value="123 45678 25353" />
-          <DetailRow
-            label="Tên người nhận"
-            value="Nguyen Chu Thuy Trang"
-            valueStyle={styles.redText}
-          />
-          <DetailRow
-            label="Ngân hàng nhận"
-            value="Vietcombank"
-            // onPress={() => setModalVisible(true)}
-          />
-          <Text style={styles.subBankName}>
-            Ngân hàng TMCP Ngoại thương Việt Nam
-          </Text>
-          <DetailRow label="Nội dung" value="Nguyen Van An Chuyen Tien" />
-          <DetailRow label="Phí chuyển tiền" value="Miễn phí" />
-          <DetailRow
-            label="Số tiền"
-            value="123,456 VND"
-            valueStyle={styles.redText}
-          />
-          <Text style={styles.amountInWords}>
-            (Một trăm hai mươi ba nghìn bốn trăm năm mươi sáu đồng (chẵn))
-          </Text>
-        </View>
-
-        <View style={styles.verificationMethod}>
-          <Text style={styles.verificationLabel}>Phương thức xác thực</Text>
-          <TouchableOpacity style={styles.smsOtpButton}>
-            <Text style={styles.smsOtpText}>SMS OTP</Text>
-            <Text style={styles.dropdownIcon}>▼</Text>
+      <LinearGradient
+        style={styles.container}
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 0}}
+        colors={['#d8ebeb', '#dfebeb', '#dfebeb']}>
+        <View style={styles.header}>
+          <TouchableOpacity style={styles.backButton}>
+            <Image source={images.a1} />
+          </TouchableOpacity>
+          <Text style={styles.headerTitle}>Chuyển tiền trong nước</Text>
+          <TouchableOpacity style={styles.menuButton}>
+            <Image source={images.a2} />
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity
-          onPress={() => setOpenOTP(true)}
-          style={styles.confirmButton}>
-          <Text style={styles.confirmButtonText}>Xác nhận</Text>
-        </TouchableOpacity>
-      </View>
+        <View style={styles.content}>
+          <View style={styles.transferDetails}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                borderBottomWidth: 0.5,
+                paddingBottom: 6,
+                borderColor: 'gray',
+                marginBottom: HEIGHT(10),
+              }}>
+              <Image source={images.a3} style={styles.infoIcon} />
+              <Text style={[styles.infoText, {fontSize: 12}]}>
+                Quý khách vui lòng kiểm tra và xác nhận thông tin giao dịch
+              </Text>
+            </View>
+            <DetailRow
+              label="Hình thức chuyển"
+              value="Chuyển tiền trong Vietcombank"
+            />
+            <DetailRow label="Tài khoản nguồn" value="121 21212 55666" />
+            <DetailRow label="Tài khoản nhận" value="123 45678 25353" />
+            <DetailRow
+              label="Tên người nhận"
+              value="Nguyen Chu Thuy Trang"
+              valueStyle={styles.redText}
+            />
+            <DetailRow
+              isIcon={true}
+              label="Ngân hàng nhận"
+              value="Vietcombank"
+              // onPress={() => setModalVisible(true)}
+            />
+            <Text style={styles.subBankName}>
+              Ngân hàng TMCP Ngoại thương Việt Nam
+            </Text>
+            <DetailRow label="Nội dung" value="Nguyen Van An Chuyen Tien" />
+            <DetailRow label="Phí chuyển tiền" value="Miễn phí" />
+            <DetailRow
+              label="Số tiền"
+              value="123,456 VND"
+              valueStyle={styles.redText}
+            />
+            <Text
+              style={[
+                styles.amountInWords,
+                {alignSelf: 'flex-end', width: '60%'},
+              ]}>
+              (Một trăm hai mươi ba nghìn bốn trăm năm mươi sáu đồng (chẵn))
+            </Text>
+          </View>
 
-      <View style={styles.footer}>
-        <Text style={styles.footerText}>
-          Phiên bản trải nghiệm VCB Digibank
-        </Text>
-      </View>
-      <OTPPopup
-        onClose={() => {
-          setOpenOTP(false);
-        }}
-        onConfirm={() => {}}
-        phoneNumber={'1'}
-        isVisible={openOTP}
-      />
-      <BankSelectionModal
-        visible={modalVisible}
-        onClose={() => setModalVisible(false)}
-        onSelectBank={bank => {
-          setSelectedBank(bank);
-          setModalVisible(false);
-        }}
-      />
+          <View
+            style={[
+              styles.verificationMethod,
+              {
+                borderTopWidth: 0.3,
+                borderTopColor: 'gray',
+                paddingTop: HEIGHT(10),
+                marginTop: HEIGHT(100),
+              },
+            ]}>
+            <Text style={styles.verificationLabel}>Phương thức xác thực</Text>
+            <LinearGradient
+              style={{borderRadius: 10}}
+              start={{x: 0, y: 0}}
+              end={{x: 1, y: 0}}
+              colors={['#adf0f0', '#dfebeb', '#d4fcfc']}>
+              <TouchableOpacity
+                style={{
+                  flexDirection: 'row',
+                  alignSelf: 'flex-end',
+                  padding: HEIGHT(6),
+                  borderRadius: 10,
+                }}>
+                <Text style={styles.smsOtpText}>SMS OTP</Text>
+                <Text style={styles.dropdownIcon}>▼</Text>
+              </TouchableOpacity>
+            </LinearGradient>
+          </View>
+
+          <TouchableOpacity
+            onPress={() => setOpenOTP(true)}
+            style={[
+              styles.confirmButton,
+              {paddingVertical: HEIGHT(8), alignItems: 'center'},
+            ]}>
+            <Text style={styles.confirmButtonText}>Xác nhận</Text>
+          </TouchableOpacity>
+        </View>
+
+        <OTPPopup
+          onClose={() => {
+            setOpenOTP(false);
+          }}
+          onConfirm={() => {}}
+          phoneNumber={'1'}
+          isVisible={openOTP}
+        />
+        <BankSelectionModal
+          visible={modalVisible}
+          onClose={() => setModalVisible(false)}
+          onSelectBank={bank => {
+            setSelectedBank(bank);
+            setModalVisible(false);
+          }}
+        />
+      </LinearGradient>
     </SafeAreaView>
   );
 };

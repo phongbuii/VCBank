@@ -8,70 +8,89 @@ import {
   ScrollView,
   Switch,
   StatusBar,
+  Image,
+  Modal,
 } from 'react-native';
 import {ArrowLeft, ChevronDown, FileText} from 'lucide-react-native';
 import {HEIGHT, WIDTH} from '../../../../app/config/functions';
+import {images} from '../assets';
+import BankSelection from './BankSelection';
 
-const RecipientInfo = () => (
-  <View style={styles.section}>
-    <View style={styles.sectionHeader}>
-      <Text style={styles.sectionTitle}>Thông tin người nhận</Text>
-      <TouchableOpacity
-        style={{flexDirection: 'row', gap: HEIGHT(8), alignItems: 'center'}}>
-        <FileText color="#2c7a3f" size={16} />
-        <Text style={styles.transferTemplateText}>Mẫu chuyển tiền</Text>
+const RecipientInfo = () => {
+  const [visible, setVisible] = useState(false);
+  return (
+    <View style={styles.section}>
+      <View style={styles.sectionHeader}>
+        <Text style={styles.sectionTitle}>Thông tin người nhận</Text>
+        <TouchableOpacity
+          style={{flexDirection: 'row', gap: HEIGHT(8), alignItems: 'center'}}>
+          <FileText color="#2c7a3f" size={16} />
+          <Text style={styles.transferTemplateText}>Mẫu chuyển tiền</Text>
+        </TouchableOpacity>
+      </View>
+      <TouchableOpacity onPress={() => setVisible(true)} style={styles.input}>
+        <Image
+          resizeMode="contain"
+          source={images.a3}
+          style={{height: HEIGHT(34), width: WIDTH(30), marginRight: 10}}
+        />
+        <View style={{gap: 2}}>
+          <Text style={styles.title}>Ngân hàng nhận</Text>
+          <Text style={styles.textName}>
+            Vietcombank - Ngân hàng TMCP Ngoại th...
+          </Text>
+        </View>
+
+        <ChevronDown color="#000" size={20} />
       </TouchableOpacity>
-    </View>
-    <TouchableOpacity style={styles.input}>
-      <ChevronDown color="#000" size={20} />
-      <View style={{gap: 2}}>
-        <Text style={styles.title}>Ngân hàng nhận</Text>
-        <Text style={styles.textName}>
-          Vietcombank - Ngân hàng TMCP Ngoại th...
-        </Text>
+      <View style={styles.input}>
+        <View style={{gap: 6}}>
+          <Text style={styles.title}>Tài khoản/thẻ nhận</Text>
+          <TextInput
+            placeholder="123 45678 25353"
+            style={{
+              height: 16,
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: 14,
+              color: 'black',
+              paddingVertical: 0,
+            }}
+          />
+        </View>
+        <TouchableOpacity>
+          <Image
+            source={images.a2}
+            style={{height: HEIGHT(32), width: WIDTH(32)}}
+          />
+        </TouchableOpacity>
       </View>
-
-      <ChevronDown color="#000" size={20} />
-    </TouchableOpacity>
-    <View style={styles.input}>
-      <View style={{gap: 6}}>
-        <Text style={styles.title}>Tài khoản/thẻ nhận</Text>
-        <TextInput
-          placeholder="123 45678 25353"
-          style={{
-            height: 16,
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: 14,
-            color: 'black',
-            paddingVertical: 0,
-          }}
-        />
+      <View style={styles.input}>
+        <View style={{gap: 8, paddingBottom: 4}}>
+          <Text style={styles.title}>Tên người nhận</Text>
+          <TextInput
+            placeholder="Nhập tên người nhận"
+            style={{
+              height: 16,
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: 14,
+              color: 'black',
+              paddingVertical: 0,
+            }}
+          />
+        </View>
       </View>
-      <FileText color="#2c7a3f" size={20} />
-    </View>
-    <View style={styles.input}>
-      <View style={{gap: 8, paddingBottom: 4}}>
-        <Text style={styles.title}>Tên người nhận</Text>
-        <TextInput
-          placeholder="Nhập tên người nhận"
-          style={{
-            height: 16,
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: 14,
-            color: 'black',
-            paddingVertical: 0,
-          }}
-        />
+      <View style={styles.switchContainer}>
+        <Text style={styles.textSave}>Lưu người nhận</Text>
+        <Switch />
       </View>
+      <Modal transparent animationType="slide" visible={visible}>
+        <BankSelection onClose={() => setVisible(false)} />
+      </Modal>
     </View>
-    <View style={styles.switchContainer}>
-      <Text style={styles.textSave}>Lưu người nhận</Text>
-      <Switch />
-    </View>
-  </View>
-);
+  );
+};
 
 const styles = StyleSheet.create({
   section: {
@@ -115,7 +134,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 13,
-    color: 'gray',
   },
   textSave: {
     fontSize: 14,

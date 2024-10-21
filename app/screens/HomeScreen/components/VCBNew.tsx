@@ -73,6 +73,13 @@ const VCBNew = () => {
         </TouchableOpacity>
 
         <View style={styles.quickActions}>
+          <TouchableOpacity
+            style={{position: 'absolute', right: 0, top: HEIGHT(35)}}>
+            <Image
+              source={images.image_26}
+              style={{height: WIDTH(30), width: WIDTH(20)}}
+            />
+          </TouchableOpacity>
           <TouchableOpacity style={styles.quickActionItem}>
             <Image
               source={images.image_22}
@@ -171,7 +178,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     flexWrap: 'wrap',
-    padding: 16,
+    padding: 20,
     width: getWidth(),
     backgroundColor: '#fff',
     borderTopLeftRadius: 30,

@@ -24,4 +24,5 @@ export const images = {
   image_23: require('./ttt.png'),
   image_24: require('./tttt.png'),
   image_25: require('./t5.png'),
+  image_26: require('./t6.png'),
 };

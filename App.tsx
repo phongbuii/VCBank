@@ -38,7 +38,7 @@ const AppRouter = () => {
         navigationService.setTopLevelNavigator(navigatorRef);
       }}>
       <Stack.Navigator
-        initialRouteName="HomeScreen"
+        initialRouteName="GiaoDichThanhCong"
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen
