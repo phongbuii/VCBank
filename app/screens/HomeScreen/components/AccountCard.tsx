@@ -1,7 +1,7 @@
 // components/AccountCard.js
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import {UserCircle, Copy, Clock, CreditCard, Eye} from 'lucide-react-native';
+import {UserCircle, Copy, Clock, CreditCard, Eye,QrCode} from 'lucide-react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {HEIGHT, WIDTH} from '../../../../app/config/functions';
 
@@ -42,7 +42,7 @@ const AccountCard = () => {
         </TouchableOpacity>
       </View>
       <TouchableOpacity style={styles.qrButton}>
-        <CreditCard color="white" size={18} />
+       <QrCode color="white" size={20} />
         <Text style={styles.qrButtonText}>QR</Text>
       </TouchableOpacity>
     </LinearGradient>
@@ -55,7 +55,9 @@ const styles = StyleSheet.create({
     marginHorizontal: WIDTH(16),
     paddingTop: HEIGHT(12),
     borderRadius: 12,
-    overflow: 'hidden',
+    // overflow: 'hidden',
+
+
   },
   userInfo: {
     flexDirection: 'row',
@@ -63,6 +65,7 @@ const styles = StyleSheet.create({
     marginBottom: 4,
     flex: 1,
     paddingHorizontal: WIDTH(16),
+    marginVertical:HEIGHT(8)
   },
   userName: {
     color: 'white',

@@ -8,4 +8,9 @@ export const images = {
   image_7: require("./mtk1.png"),
   image_8: require("./qln.png"),
   image_9: require("./qln1.png"),
+  image_10: require("./cttn1.png"),
+  image_11: require("./backgr.jpeg"),
+  image_12: require("./blue.jpeg"),
+  image_13: require("./bottom4.jpeg"),
+  
 }

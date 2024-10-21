@@ -1,6 +1,6 @@
 // components/FavoriteFeatures.js
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, FlatList, Image} from 'react-native';
 import {
   Settings2,
   DollarSign,
@@ -15,34 +15,40 @@ import {
   ChevronRight,
 } from 'lucide-react-native';
 import {getWidth, HEIGHT, WIDTH} from '../../../../app/config/functions';
+import { images } from '../assets';
 const DATA = [
   {
     label: 'page1',
     data: [
       {
         title: 'Chuyển tiền từ thiện',
-        icon: <DollarSign color="#2c7a3f" size={24} />,
+        icon: <Image resizeMode="contain" source={images.image_7} style ={{height:WIDTH(26),width:WIDTH(26)}} />,
       },
       {
         title: 'Chuyển tiền trong nước',
-        icon: <DollarSign color="#2c7a3f" size={24} />,
+       icon: <Image resizeMode="contain" source={images.image_10} style ={{height:WIDTH(26),width:WIDTH(26)}} />,
+
       },
       {
         title: 'Quản lý nhóm',
-        icon: <DollarSign color="#2c7a3f" size={24} />,
+              icon: <Image resizeMode="contain" source={images.image_9} style ={{height:WIDTH(22),width:WIDTH(22)}} />,
+
         isNew: true,
       },
       {
         title: 'Mở tiết kiệm',
-        icon: <DollarSign color="#2c7a3f" size={24} />,
+        icon: <Image resizeMode="contain" source={images.image_1} style ={{height:WIDTH(26),width:WIDTH(26)}} />,
+
       },
       {
         title: 'Cài đặt hạn mức chuyển',
-        icon: <DollarSign color="#2c7a3f" size={24} />,
+          icon: <Image resizeMode="contain" source={images.image_2} style ={{height:WIDTH(24),width:WIDTH(24)}} />,
+
       },
       {
         title: 'Nạp tiền điện thoại',
-        icon: <DollarSign color="#2c7a3f" size={24} />,
+                icon: <Image resizeMode="contain" source={images.image_3} style ={{height:WIDTH(22),width:WIDTH(22)}} />,
+
       },
     ],
   },
@@ -216,9 +222,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   buttonNav: {
-    backgroundColor: '#2c7a3f',
+    backgroundColor: '#CCCC99',
     paddingVertical: 8,
-    paddingLeft: 4,
+    paddingLeft:8,
     borderTopLeftRadius: 100,
     borderBottomLeftRadius: 100,
     position: 'absolute',

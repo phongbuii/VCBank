@@ -1,6 +1,6 @@
 // App.js
 import React from 'react';
-import {SafeAreaView, StyleSheet, ScrollView, View} from 'react-native';
+import {SafeAreaView, StyleSheet, ScrollView, View, Image} from 'react-native';
 import Header from './components/Header';
 import AccountCard from './components/AccountCard';
 import FavoriteFeatures from './components/FavoriteFeatures';
@@ -10,6 +10,8 @@ import {HEIGHT, WIDTH} from '../../../app/config/functions';
 import VCBRewardsCard from './components/VCBRewardsCard';
 import PromoCard from './components/PromoCard';
 import FinanceManagementCard from './components/FinanceManagementCard';
+import { images } from './assets';
+import VCBNew from './components/VCBNew';
 // import Header from "./components/Header"
 // import AccountCard from "./components/AccountCard"
 // import FavoriteFeatures from "./components/FavoriteFeatures"
@@ -18,11 +20,17 @@ import FinanceManagementCard from './components/FinanceManagementCard';
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
+  
+      <ScrollView style={{ }} >
+            <Image source={images.image_12} style={{ height: HEIGHT(30), opacity: 1 }} />
+      <View style ={{zIndex:1}} >
       <Header />
-      <ScrollView>
-        <View style={{height: HEIGHT(24)}} />
-        <AccountCard />
+        </View>
+        <View style ={{marginTop: -HEIGHT(15), zIndex: 1000 }} >
+        <AccountCard  />
+
+        </View>
         <View style={{height: HEIGHT(24)}} />
         <FavoriteFeatures />
         <View style={{height: HEIGHT(24)}} />
@@ -39,11 +47,12 @@ const App = () => {
         </View>
         <View style={{height: HEIGHT(24)}} />
         <FinanceManagementCard onExplorePress={() => {}} />
-        <View style={{height: HEIGHT(24)}} />
+        <View style={{ height: HEIGHT(24) }} />
+        <VCBNew />
       </ScrollView>
       <ChatWithDigibot />
       <BottomNavigation />
-    </SafeAreaView>
+    </View>
   );
 };
 
