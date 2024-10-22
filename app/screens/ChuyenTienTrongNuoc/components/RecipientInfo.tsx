@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -16,8 +16,13 @@ import {HEIGHT, WIDTH} from '../../../../app/config/functions';
 import {images} from '../assets';
 import BankSelection from './BankSelection';
 
-const RecipientInfo = () => {
+const RecipientInfo = ({disableScroll}) => {
   const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    if (visible) {
+      disableScroll(true)
+    }
+  },[visible])
   return (
     <View style={styles.section}>
       <View style={styles.sectionHeader}>
@@ -47,6 +52,7 @@ const RecipientInfo = () => {
         <View style={{gap: 6}}>
           <Text style={styles.title}>Tài khoản/thẻ nhận</Text>
           <TextInput
+            keyboardType="numeric"
             placeholder="123 45678 25353"
             style={{
               height: 16,

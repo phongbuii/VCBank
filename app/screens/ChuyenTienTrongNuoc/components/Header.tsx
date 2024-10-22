@@ -11,7 +11,7 @@ import {ArrowLeft, Home} from 'lucide-react-native';
 import {HEIGHT, WIDTH} from '../../../../app/config/functions';
 import {goBack} from '../../../navigator/navigationService';
 import {images} from '../assets';
-const Header = () => (
+const Header = ({navigation}) => (
   <View>
     <StatusBar
       backgroundColor={'transparent'}
@@ -24,7 +24,7 @@ const Header = () => (
         style={{flexDirection: 'row', alignItems: 'center', gap: 12, flex: 1}}>
         <TouchableOpacity
           onPress={() => {
-            goBack();
+            navigation.goBack();
           }}>
           <ArrowLeft color="#000" size={24} />
         </TouchableOpacity>

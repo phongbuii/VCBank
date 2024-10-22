@@ -17,61 +17,61 @@ const banks = [
     id: 1,
     name: 'Vietcombank',
     description: 'Ngân hàng TMCP Ngoại thương Việt Nam',
-    icon: images.a1,
+    icon: images.a3,
   },
   {
     id: 2,
     name: 'BIDV',
     description: 'Ngân hàng Đầu tư và Phát triển Việt Nam',
-    icon: images.a1,
+    icon: images.BIDV,
   },
   {
     id: 3,
     name: 'TP Bank',
     description: 'Ngân hàng Tiền Phong',
-    icon: images.a1,
+    icon: images.TPB,
   },
   {
     id: 4,
     name: 'MSB',
     description: 'Ngân hàng Hàng Hải',
-    icon: images.a1,
+    icon: images.MSB,
   },
   {
     id: 5,
     name: 'VIB',
     description: 'Ngân hàng Quốc Tế Việt Nam',
-    icon: images.a1,
+    icon: images.VIB,
   },
   {
     id: 6,
     name: 'Vietinbank',
     description: 'Ngân hàng Công thương Việt Nam',
-    icon: images.a1,
+    icon: images.VIETTINB,
   },
   {
     id: 7,
     name: 'Sacombank',
     description: 'Ngân hàng Thương mại Cổ phần Sài Gòn Thương tín',
-    icon: images.a1,
+    icon: images.SACOB,
   },
   {
     id: 8,
     name: 'MB Bank',
     description: 'Ngân hàng Quân Đội',
-    icon: images.a1,
+    icon: images.MBB,
   },
   {
     id: 9,
     name: 'ACB',
     description: 'Ngân hàng Thương mại Cổ phần Á Châu',
-    icon: images.a1,
+    icon: images.acb,
   },
   {
     id: 10,
     name: 'VP Bank',
     description: 'Ngân hàng TMCP Việt Nam Thịnh Vượng',
-    icon: images.a1,
+    icon: images.VPB,
   },
 ];
 
@@ -88,7 +88,7 @@ const BankSelection = ({onClose}) => {
       <View
         style={{
           backgroundColor: '#fff',
-          marginTop: HEIGHT(40),
+          marginTop: HEIGHT(80),
           flex: 1,
           borderTopLeftRadius: 20,
           borderTopRightRadius: 20,
@@ -99,6 +99,7 @@ const BankSelection = ({onClose}) => {
             color: 'black',
             textAlign: 'center',
             marginTop: HEIGHT(16),
+            fontSize:16
           }}>
           {' '}
           Chọn ngân hàng{' '}
@@ -122,7 +123,7 @@ const BankSelection = ({onClose}) => {
               height: HEIGHT(20),
               width: WIDTH(20),
               position: 'absolute',
-              top: HEIGHT(10),
+              top: HEIGHT(6),
               left: WIDTH(20),
             }}
           />
@@ -134,9 +135,9 @@ const BankSelection = ({onClose}) => {
               width: '90%',
               alignSelf: 'center',
               alignItems: 'center',
-              borderRadius: 14,
+              borderRadius: 10,
               borderColor: 'grey',
-              paddingVertical: HEIGHT(4),
+              paddingVertical: HEIGHT(8),
               paddingHorizontal: WIDTH(30),
             }}
           />
@@ -166,8 +167,8 @@ const BankSelection = ({onClose}) => {
               <Image
                 source={item.icon}
                 style={{
-                  height: WIDTH(20),
-                  width: WIDTH(20),
+                  height: WIDTH(26),
+                  width: WIDTH(26),
                   marginRight: WIDTH(12),
                 }}
               />

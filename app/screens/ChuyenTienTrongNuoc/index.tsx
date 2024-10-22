@@ -17,7 +17,9 @@ import ButtonAction from './components/ButtonAction';
 import Header from './components/Header';
 import LinearGradient from 'react-native-linear-gradient';
 
-const ChuyenTienTrongNuoc = () => (
+const ChuyenTienTrongNuoc = ({navigation}) => {
+  const [scroll,setScroll]=useState(false)
+  return(
   <View style={styles.container}>
     <StatusBar
       backgroundColor={'transparent'}
@@ -29,19 +31,22 @@ const ChuyenTienTrongNuoc = () => (
       start={{x: 0, y: 0}}
       end={{x: 1, y: 0}}
       colors={['#d8ebeb', '#dfebeb', '#dfebeb']}>
-      <Header />
+      <Header navigation ={navigation} />
       <View style={{flex: 1, paddingBottom: 48}}>
-        <ScrollView showsVerticalScrollIndicator={false} style={{flex: 1}}>
+        <ScrollView scrollEnabled ={!scroll} showsVerticalScrollIndicator={false} style={{flex: 1}}>
           <ListSourceAccount />
-          <RecipientInfo />
+            <RecipientInfo disableScroll={(value) => {
+            setScroll(value)
+          }} />
           <TransactionInfo />
         </ScrollView>
-        <ButtonAction />
+        <ButtonAction navigation={navigation} />
       </View>
     </LinearGradient>
   </View>
 );
 
+}
 const styles = StyleSheet.create({
   container: {
     flex: 1,

@@ -15,7 +15,7 @@ import {ArrowLeft, ChevronDown, FileText} from 'lucide-react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {HEIGHT, WIDTH} from '../../../../app/config/functions';
 
-const SourceAccount = ({accountNumber, setIndexChoose, isChoose, index}) => (
+const SourceAccount = ({accountNumber, setIndexChoose, isChoose, index,}) => (
   <Pressable
     onPress={() => {
       setIndexChoose(index);
@@ -71,9 +71,9 @@ const SourceAccount = ({accountNumber, setIndexChoose, isChoose, index}) => (
   </Pressable>
 );
 
-const ButtonAction = () => {
+const ButtonAction = ({navigation}) => {
   return (
-    <Pressable onPress={() => {}}>
+    <TouchableOpacity onPress={() => {navigation.navigate("ChiTietChuyenTien")}}>
       <LinearGradient
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
@@ -81,7 +81,7 @@ const ButtonAction = () => {
         style={styles.button}>
         <Text style={styles.textButton}>Tiếp tục</Text>
       </LinearGradient>
-    </Pressable>
+    </TouchableOpacity>
   );
 };
 export default ButtonAction;

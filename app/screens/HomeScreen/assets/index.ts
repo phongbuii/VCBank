@@ -11,7 +11,7 @@ export const images = {
   image_10: require('./cttn1.png'),
   image_11: require('./backgr.jpeg'),
   image_12: require('./blue.jpeg'),
-  image_13: require('./bottom4.jpeg'),
+  image_13: require('./bottom2.jpeg'),
   image_14: require('./bieudo.png'),
   image_15: require('./visa.png'),
   image_16: require('./vcbRewards.png'),
@@ -25,4 +25,5 @@ export const images = {
   image_24: require('./tttt.png'),
   image_25: require('./t5.png'),
   image_26: require('./t6.png'),
+    image_27: require('./bottom3.jpeg'),
 };

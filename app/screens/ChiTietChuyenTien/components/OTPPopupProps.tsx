@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {
   View,
   Text,
@@ -7,6 +7,7 @@ import {
   Modal,
   TextInput,
   Image,
+  Keyboard,
 } from 'react-native';
 import {ArrowLeft, Home} from 'lucide-react-native';
 import {images} from '../assets';
@@ -45,7 +46,12 @@ const OTPPopup: React.FC<OTPPopupProps> = ({
   const handleConfirm = () => {
     onConfirm(otp.join(''));
   };
-
+  useEffect(() => {
+    if (otp[5].length) {
+   Keyboard.dismiss()
+ }
+  
+},[otp])
   return (
     <Modal visible={isVisible} transparent>
       <View style={styles.overlay}>

@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 4,
   },
   activeTab: {
-    backgroundColor: "#2c7a3f",
+    backgroundColor: "#66CC00",
     borderRadius: 16,
   },
   tabText: {

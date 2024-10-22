@@ -48,7 +48,7 @@ const DetailRow: React.FC<DetailRowProps> = ({
   </View>
 );
 
-const ChiTietChuyenTien = () => {
+const ChiTietChuyenTien = ({navigation}) => {
   const insets = useSafeAreaInsets();
   const [openOTP, setOpenOTP] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
@@ -61,7 +61,7 @@ const ChiTietChuyenTien = () => {
         end={{x: 1, y: 0}}
         colors={['#d8ebeb', '#dfebeb', '#dfebeb']}>
         <View style={styles.header}>
-          <TouchableOpacity style={styles.backButton}>
+          <TouchableOpacity onPress={()=>navigation.goBack()} style={styles.backButton}>
             <Image source={images.a1} />
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Chuyển tiền trong nước</Text>
@@ -129,7 +129,7 @@ const ChiTietChuyenTien = () => {
                 borderTopWidth: 0.3,
                 borderTopColor: 'gray',
                 paddingTop: HEIGHT(10),
-                marginTop: HEIGHT(100),
+                marginTop: HEIGHT(160),
               },
             ]}>
             <Text style={styles.verificationLabel}>Phương thức xác thực</Text>
@@ -165,7 +165,13 @@ const ChiTietChuyenTien = () => {
           onClose={() => {
             setOpenOTP(false);
           }}
-          onConfirm={() => {}}
+          onConfirm={() => {
+            setOpenOTP(false)
+            setTimeout(() => {
+            navigation.navigate("GiaoDichThanhCong")
+              
+            },1000)
+          }}
           phoneNumber={'1'}
           isVisible={openOTP}
         />

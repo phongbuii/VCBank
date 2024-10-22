@@ -5,13 +5,13 @@ import { Bell, Settings, LogOut } from "lucide-react-native"
 import { getWidth, HEIGHT, WIDTH } from "../../../../app/config/functions"
 import { images } from "../assets"
 
-const Header = () => {
+const Header = ({navigation}) => {
   return (
        <ImageBackground resizeMode="stretch" source={images.image_11} style ={{height:HEIGHT(200),width:getWidth()}} >
       <Text style={styles.logo}></Text>
       <View style={styles.iconContainer}>
         <View style={styles.iconWrapper}>
-          <TouchableOpacity style ={{height:HEIGHT(32),width:WIDTH(32),opacity:0.3,backgroundColor:"rgba(255, 255, 255, 0.09)",borderRadius:20}} />
+          <TouchableOpacity onPress={()=>{navigation.native("ThongTinThongBao")}} style ={{height:HEIGHT(32),width:WIDTH(32),opacity:0.3,backgroundColor:"rgba(255, 255, 255, 0.09)",borderRadius:20}} />
         </View>
                   <TouchableOpacity style ={{height:HEIGHT(30),width:WIDTH(30),opacity:0.3,backgroundColor:"rgba(255, 255, 255, 0.1)",borderRadius:20,marginTop:-HEIGHT(15),marginRight:WIDTH(10)}} />
 

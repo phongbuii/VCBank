@@ -18,7 +18,7 @@ import VCBNew from './components/VCBNew';
 // import BottomNavigation from "./components/BottomNavigation"
 // import ChatWithDigibot from "./components/ChatWithDigibot"
 
-const App = () => {
+const App = ({navigation}) => {
   return (
     <View style={styles.container}>
       <ScrollView style={{}}>
@@ -29,7 +29,7 @@ const App = () => {
           <AccountCard />
         </View>
         <View style={{height: HEIGHT(24)}} />
-        <FavoriteFeatures />
+        <FavoriteFeatures navigation={navigation} />
         <View style={{height: HEIGHT(24)}} />
         <View
           style={{
@@ -48,8 +48,10 @@ const App = () => {
         <View style={{height: HEIGHT(24)}} />
         <VCBNew />
       </ScrollView>
-      <ChatWithDigibot />
-      <BottomNavigation />
+      {/* <ChatWithDigibot /> */}
+      <View style ={{position:"absolute",bottom:HEIGHT(30),alignItems:"center",justifyContent:"center",alignSelf:"center",paddingLeft:WIDTH(10)}} >
+      <BottomNavigation navigation ={navigation} />
+      </View>
     </View>
   );
 };
@@ -58,7 +60,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f0f0f0',
-    paddingBottom: 60,
+    paddingBottom: HEIGHT(50),
+    
   },
 });
 

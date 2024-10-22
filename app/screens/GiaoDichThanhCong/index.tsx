@@ -10,8 +10,9 @@ import {
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {images} from './assets';
 import {HEIGHT, WIDTH} from '../../../app/config/functions';
+import LinearGradient from 'react-native-linear-gradient';
 
-const GiaoDichThanhCong = () => {
+const GiaoDichThanhCong = ({navigation}) => {
   const insets = useSafeAreaInsets();
 
   return (
@@ -61,6 +62,7 @@ const GiaoDichThanhCong = () => {
           <ActionButton icon="split" label="Chia hoá đơn" icon={images.a7} />
         </View>
       </View>
+      <ButtonAction navigation={navigation} />
     </SafeAreaView>
   );
 };
@@ -76,7 +78,7 @@ const DetailRow = ({label, value, isIcon}) => (
           width: WIDTH(20),
           position: 'absolute',
           right: WIDTH(90),
-          top: HEIGHT(8),
+          top: HEIGHT(2),
         }}
       />
     )}
@@ -94,7 +96,19 @@ const ActionButton = ({icon, label}) => (
     <Text style={styles.actionLabel}>{label}</Text>
   </TouchableOpacity>
 );
-
+const ButtonAction = ({navigation}) => {
+  return (
+    <TouchableOpacity onPress={() => {navigation.navigate("ChuyenTienTrongNuoc")}}>
+      <LinearGradient
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 0}}
+        colors={['#86C440', '#006840']}
+        style={styles.button}>
+        <Text style={styles.textButton}>Giao dịch mới</Text>
+      </LinearGradient>
+    </TouchableOpacity>
+  );
+};
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -215,6 +229,56 @@ const styles = StyleSheet.create({
   footerText: {
     color: '#666',
     fontSize: 12,
+  },
+   button: {
+    height: 40,
+    width: WIDTH(343),
+    alignSelf: 'center',
+    marginVertical: HEIGHT(16),
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 12,
+  },
+  textButton: {fontSize: 14, fontWeight: '600', color: 'white'},
+  sourceAccount: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: HEIGHT(16),
+    marginRight: WIDTH(16),
+    marginVertical: WIDTH(16),
+    borderRadius: 12,
+    width: WIDTH(311),
+  },
+  sourceAccountLabel: {
+    color: 'white',
+    marginBottom: HEIGHT(4),
+    fontSize: 12,
+  },
+  sourceAccountNumber: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 14,
+    letterSpacing: 2,
+    textAlign: 'center',
+  },
+  sourceAccountVND: {
+    color: 'white',
+    fontWeight: '300',
+    fontSize: 12,
+
+    letterSpacing: 2,
+    textAlign: 'center',
+  },
+
+  sourceAccountRight: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  sourceAccountBalance: {
+    color: 'white',
+    marginRight: WIDTH(8),
   },
 });
 

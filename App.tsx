@@ -7,6 +7,7 @@ import HomeScreen from './app/screens/HomeScreen';
 import ChuyenTienTrongNuoc from './app/screens/ChuyenTienTrongNuoc';
 import GiaoDichThanhCong from './app/screens/GiaoDichThanhCong';
 import ThongTinThongBao from './app/screens/ThongTinThongBao';
+import QRScannerScreen from './app/screens/QRScannerScreen';
 // import QRScannerScreen from './app/screens/QRScannerScreen';
 const Stack = createStackNavigator();
 const config = {
@@ -38,7 +39,7 @@ const AppRouter = () => {
         navigationService.setTopLevelNavigator(navigatorRef);
       }}>
       <Stack.Navigator
-        initialRouteName="GiaoDichThanhCong"
+        initialRouteName="HomeScreen"
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen
@@ -48,7 +49,7 @@ const AppRouter = () => {
 
         <Stack.Screen name="ChiTietChuyenTien" component={ChiTietChuyenTien} />
         <Stack.Screen name="ThongTinThongBao" component={ThongTinThongBao} />
-        {/* <Stack.Screen name="QRScannerScreen" component={QRScannerScreen} /> */}
+        <Stack.Screen name="QRScannerScreen" component={QRScannerScreen} />
         <Stack.Screen name="GiaoDichThanhCong" component={GiaoDichThanhCong} />
       </Stack.Navigator>
     </NavigationContainer>

@@ -53,8 +53,8 @@ const DATA = [
     ],
   },
 ];
-const FeatureButton = ({icon, label, isNew = false}) => (
-  <TouchableOpacity style={styles.featureButton}>
+const FeatureButton = ({icon, label, isNew = false,onPress}) => (
+  <TouchableOpacity onPress={onPress} style={styles.featureButton}>
     <View style={styles.iconContainer}>{icon}</View>
     <Text style={styles.featureLabel}>{label}</Text>
     {isNew && (
@@ -65,7 +65,7 @@ const FeatureButton = ({icon, label, isNew = false}) => (
   </TouchableOpacity>
 );
 
-const FavoriteFeatures = () => {
+const FavoriteFeatures = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -87,6 +87,7 @@ const FavoriteFeatures = () => {
           return (
             <View style={{width: getWidth()}}>
               <FlatList
+                scrollEnabled ={false}
                 style={{
                   width: getWidth(),
                   paddingHorizontal: WIDTH(16),
@@ -97,6 +98,12 @@ const FavoriteFeatures = () => {
                 renderItem={({item, index}) => {
                   return (
                     <FeatureButton
+                      onPress={() => {
+                        if (index === 1) {
+                         console.log("navigation",navigation);
+                         navigation?.navigate("ChuyenTienTrongNuoc")
+                        }
+                      }}
                       key={index}
                       icon={item?.icon}
                       label={item?.title}
