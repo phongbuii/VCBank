@@ -30,7 +30,7 @@ const ChuyenTienTrongNuoc = ({navigation}) => {
       style={styles.container}
       start={{x: 0, y: 0}}
       end={{x: 1, y: 0}}
-      colors={['#d8ebeb', '#dfebeb', '#dfebeb']}>
+      colors={['#e1f1f1', '#e4f2f2', '#e4f2f2']} >
       <Header navigation ={navigation} />
       <View style={{flex: 1, paddingBottom: 48}}>
         <ScrollView scrollEnabled ={!scroll} showsVerticalScrollIndicator={false} style={{flex: 1}}>

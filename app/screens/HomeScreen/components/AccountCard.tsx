@@ -10,7 +10,7 @@ const AccountCard = () => {
     <LinearGradient
       start={{x: 0, y: 0}}
       end={{x: 1, y: 0}}
-      colors={['#86C440', '#006840']}
+    colors={['#9EDD50', '#008B50']} 
       style={styles.card}>
       <View style={styles.userInfo}>
         <UserCircle color="white" size={24} />

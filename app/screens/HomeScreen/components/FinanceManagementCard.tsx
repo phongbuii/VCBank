@@ -64,7 +64,7 @@ const FinanceManagementCard = ({onExplorePress}) => {
             <LinearGradient
               start={{x: 0, y: 0}}
               end={{x: 1, y: 0}}
-              colors={['#86C440', '#006840']}
+             colors={['#9EDD50', '#008B50']} 
               style={styles.exploreButton}>
               <Text style={styles.exploreButtonText}>Khám phá ngay</Text>
             </LinearGradient>

@@ -118,13 +118,6 @@ const QRScannerScreen = ({ navigation }) => {
           }}
           onBarCodeRead={onBarCodeRead}
         >
-        
-          {/* <View style={styles.scanFrame}>
-            <View style={styles.cornerTL} />
-            <View style={styles.cornerTR} />
-            <View style={styles.cornerBL} />
-            <View style={styles.cornerBR} />
-          </View> */}
         </RNCamera>
       </View>
     </View>

@@ -59,7 +59,7 @@ const ChiTietChuyenTien = ({navigation}) => {
         style={styles.container}
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
-        colors={['#d8ebeb', '#dfebeb', '#dfebeb']}>
+         colors={['#e1f1f1', '#e4f2f2', '#e4f2f2']} >
         <View style={styles.header}>
           <TouchableOpacity onPress={()=>navigation.goBack()} style={styles.backButton}>
             <Image source={images.a1} />

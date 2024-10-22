@@ -77,7 +77,7 @@ const ButtonAction = ({navigation}) => {
       <LinearGradient
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
-        colors={['#86C440', '#006840']}
+      colors={['#9EDD50', '#008B50']} 
         style={styles.button}>
         <Text style={styles.textButton}>Tiếp tục</Text>
       </LinearGradient>
